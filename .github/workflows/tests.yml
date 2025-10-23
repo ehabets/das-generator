@@ -26,9 +26,17 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     
-    - name: Install dependencies
+    - name: Install build dependencies
       run: |
         python -m pip install --upgrade pip
+        pip install setuptools wheel cffi
+    
+    - name: Build CFFI extension
+      run: |
+        python das_generator/_cffi/build.py
+    
+    - name: Install package with test dependencies
+      run: |
         pip install -e .[tests]
     
     - name: Run tests

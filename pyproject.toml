@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools-scm>=8", "cffi>=1.17.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "das-generator"
+dynamic = ["version"]
+description = "Dynamic Acoustic Scene Generator."
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+    { name = "Emanuel Habets", email = "emanuel.habets@audiolabs-erlangen.de" },
+]
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "numpy>=2.2",
+    "scipy>=0.14.1",
+    "cffi>=1.17.1",
+]
+
+[project.optional-dependencies]
+tests = [
+    "pytest",
+    "pytest-cov",
+    "pytest-black",
+]
+
+[tool.cffi]
+module = "das_generator/_cffi/build.py:das_generator"
+
+[tool.setuptools_scm]
+# This section is required for setuptools-scm to work
+# Version will be automatically determined from git tags
+
+[project.urls]
+Homepage = "https://github.com/ehabets/das-generator"
+Issues = "https://github.com/ehabets/das-generator/issues"

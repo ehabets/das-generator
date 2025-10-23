@@ -1,0 +1,1 @@
+recursive-include das_generator/_cffi *.cpp *.h *.py
